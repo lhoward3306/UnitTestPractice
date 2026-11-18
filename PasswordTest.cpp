@@ -24,7 +24,7 @@ TEST(PasswordTest, single_letter_password)
 TEST(PasswordTest, website_password_www)
 {
 	Password my_password;
-	int actual = my_password.count_leading_characters("WWW.");
+	int actual = my_password.count_leading_characters("WWW");
 	ASSERT_EQ(3, actual);
 }
 
@@ -32,25 +32,25 @@ TEST(PasswordTest, website_password_https)
 {
 	Password my_password;
 	int actual = my_password.count_leading_characters("https");
-	ASSERT_EQ(5, actual);
+	ASSERT_EQ(1, actual);
 }
 
 TEST(PasswordTest, has_mixed_case_upper)
 {
 	Password my_password;
-	int actual = my_password.count_leading_characters("ABCIENSGHKSHFD");
-	ASSERT_EQ(true, actual);
+	bool actual = my_password.has_mixed_case("ABCIENSGHKSHFD");
+	ASSERT_EQ(false, actual);
 }
 
 TEST(PasswordTest, has_mixed_case_lower)
 {
 	Password my_password;
-	int actual = my_password.count_leading_characters("adkgjhsdjkgba");
-	ASSERT_EQ(true, actual);
+	bool actual = my_password.has_mixed_case("adkgjhsdjkgba");
+	ASSERT_EQ(false, actual);
 }
 TEST(PasswordTest, has_mixed_case_mixed)
 {
 	Password my_password;
-	int actual = my_password.count_leading_characters("sdjhOKLHSDOGHjlmshdngoj");
+	bool actual = my_password.has_mixed_case("sdjhOKLHSDOGHjlmshdngoj");
 	ASSERT_EQ(true, actual);
 }
